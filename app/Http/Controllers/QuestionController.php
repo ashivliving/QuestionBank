@@ -24,7 +24,6 @@ class QuestionController extends Controller
     public function index()
     {
         $quest = Question::all();
-
         return view('question.index',['quest' => $quest]);
     }
 
@@ -48,7 +47,17 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        echo "Hey";
+        $this->validate($request,Question::$create_validation_rules);
+        $data = $request->only('class','subject','question','answer');
+        $question = Question::create($data);
+        if($question)
+        {
+            $quest = Question::all();
+            return redirect()->route('question.index',['quest' => $quest]);
+        }
+        else{
+            return back()->withInput();
+        }
     }
 
     /**
@@ -66,7 +75,7 @@ class QuestionController extends Controller
             }
          else{
         $question = Question::find($id);
-        return view('question.show',compact('question'));
+        return view('question.show',['question'=>$question]);
         }
     }
 
@@ -78,7 +87,8 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Question::find($id);
+      return view('question.edit',compact('question'));
     }
 
     /**
@@ -90,7 +100,16 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,Question::$update_validation_rules);
+        $data = $request->only('question','answer');
+        $question = Question::find($id);
+        if($question)
+        {
+          $question->update($data);
+          return redirect()->route('question.show',$question->id);
+        }
+
+        return back()->withInput();
     }
 
     /**

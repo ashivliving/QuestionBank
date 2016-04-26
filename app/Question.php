@@ -11,6 +11,8 @@ class Question extends Model
 	  protected $table = 'questions';
 
 	  public static $create_validation_rules = [
+	  	'class'=>'required',
+	  	'subject'=>'required',
 	    'question'=>'required',
 	    'answer'=>'required'
 	  ];

@@ -7,9 +7,11 @@
       <h3>Create Question</h3>
       <hr/>
       {!! Form::open(array('route'=>'question.store')) !!}
+      
         <div class="form-group">
           <label for="">Class</label>
           <select class="form-control input-sm" name="class" id="class"> 
+          <option value="">Selece Class</option>
             @foreach($quest as $que )
               <option value="{{$que->class}}">{{$que->class}}</option>
             @endforeach
@@ -23,7 +25,7 @@
           </select>
         </div>
 
-
+        <div id="addquestion" class="btn btn-sm btn-success">Add Question</div>
         <div id="form">
         <div class="form-group">
           <!-- {!! Form::label('title','Article Title') !!} -->
@@ -42,8 +44,7 @@
 
       <script>
         $('#class').on('change',function(e){
-          console.log(e);
-          //alert("HEY");
+          //console.log(e);
           var class_id = e.target.value;
           $.get('/ajax-subcat?class_name='+class_id,function(data){
             $('#subject').empty();
@@ -52,8 +53,18 @@
               //console.log(data);
             });
           });
-
         });
+
+        $('#form').hide();
+        $('#addquestion').hide();
+        $('#subject').on('change',function(){
+          $('#addquestion').show();
+        });
+        $('#addquestion').on('click',function(){
+          $('#addquestion').hide();
+          $('#form').show();
+        })
+
       </script>
 
 @endsection
