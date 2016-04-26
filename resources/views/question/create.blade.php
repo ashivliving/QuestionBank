@@ -19,7 +19,7 @@
          <div class="form-group">
           <label for="">Subject</label>
           <select class="form-control input-sm" name="subject" id="subject">
-            <option value=""></option>
+            <option value="">Selece Subject</option>
           </select>
         </div>
 
@@ -43,11 +43,13 @@
       <script>
         $('#class').on('change',function(e){
           console.log(e);
+          //alert("HEY");
           var class_id = e.target.value;
           $.get('/ajax-subcat?class_name='+class_id,function(data){
             $('#subject').empty();
             $.each(data,function(index,subjectObj){
               $('#subject').append('<option value="'+subjectObj.subject+'">'+subjectObj.subject+'</option>');
+              //console.log(data);
             });
           });
 
