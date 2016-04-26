@@ -11,6 +11,4 @@ class PagesController extends Controller
     public function welcome(){
     	return view('pages.welcome');
     }
-
-    
 }

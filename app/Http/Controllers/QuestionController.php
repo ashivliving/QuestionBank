@@ -16,14 +16,15 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function __construct()
+   /*  public function __construct()
     {
       $this->middleware('auth',['except'=>['index','show']]);
     }
-
+*/
     public function index()
     {
         $quest = Question::all();
+
         return view('question.index',['quest' => $quest]);
     }
 
@@ -34,7 +35,9 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $quest = Question::all();
+        $quest = $quest->unique('class');
+        return view('question.create',['quest' => $quest]);
     }
 
     /**
@@ -45,7 +48,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo "Hey";
     }
 
     /**
@@ -56,7 +59,15 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        if(isset($_REQUEST['del']))
+            {
+                  Question::destroy($id);
+                  return redirect()->route('question.index');
+            }
+         else{
+        $question = Question::find($id);
+        return view('question.show',compact('question'));
+        }
     }
 
     /**
