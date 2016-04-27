@@ -24,6 +24,21 @@ Route::get('/home', ['uses'=>'PagesController@welcome']);
  Route::get('/ajax-subcat',function(){
  	$class_name = Input::get('class_name');
  	$subject = Question::where('class','=',$class_name)->get();
- 	//$subject = $subject->unique();
+ 	$subject = $subject->unique('subject');
  	return Response::json($subject);
+ });
+
+  Route::get('/ajax-subcat1',function(){
+ 	$class_name = Input::get('class_name');
+ 	$subjectall = Question::where('class','=',$class_name)->get();
+ 	//$subject = $subject->unique('subject');
+ 	return Response::json($subjectall);
+ });
+
+  Route::get('/ajax-subcat2',function(){
+ 	$class_name = Input::get('class_name');
+ 	$subject_name = Input::get('subject_name');
+ 	$subjectall = Question::where('class','=',$class_name)->where('subject','=',$subject_name)->get();
+ 	//$subject = $subject->unique('subject');
+ 	return Response::json($subjectall);
  });
