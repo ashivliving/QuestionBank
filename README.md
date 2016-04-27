@@ -19,7 +19,7 @@ Install -
  
 2)Change to root directory of project
  
- - cd LaravelProject
+ - cd QuestionBank
  
 3)Install the dependencies
  
