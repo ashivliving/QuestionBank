@@ -11,7 +11,7 @@
 <nav class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
-			{{ link_to_route('root','My Tasks',null,array('class' => 'navbar-brand')) }}
+			{{ link_to_route('root','Question Bank',null,array('class' => 'navbar-brand')) }}
 		</div>
 		<ul class="navbar-nav nav navbar-right">
 				<li>{{ link_to_route('question.create', 'Add Question') }}</li>

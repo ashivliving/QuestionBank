@@ -24,7 +24,8 @@ class QuestionController extends Controller
     public function index()
     {
         $quest = Question::all();
-        return view('question.index',['quest' => $quest]);
+        $que = $quest->unique('class');
+        return view('question.index',compact('quest','que'));
     }
 
     /**
