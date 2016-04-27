@@ -7,7 +7,7 @@
       <h3>Create Question</h3>
       <hr/>
       {!! Form::open(array('route'=>'question.store')) !!}
-      
+
         <div class="form-group">
           <label for="">Class</label>
           <select class="form-control input-sm" name="class" id="class"> 
@@ -48,6 +48,7 @@
           var class_id = e.target.value;
           $.get('/ajax-subcat?class_name='+class_id,function(data){
             $('#subject').empty();
+            $('#subject').append('<option value="">Selece Subject</option>');
             $.each(data,function(index,subjectObj){
               $('#subject').append('<option value="'+subjectObj.subject+'">'+subjectObj.subject+'</option>');
               //console.log(data);

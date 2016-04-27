@@ -15,7 +15,7 @@ Install -
  
 1)clone the repository by
  
- - git clone https://g...content-available-to-author-only...b.com/ashivliving/QuestionBank.git
+ - git clone https://github.com/ashivliving/QuestionBank.git
  
 2)Change to root directory of project
  
