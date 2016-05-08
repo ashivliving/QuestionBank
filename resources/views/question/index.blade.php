@@ -55,8 +55,10 @@
       $('#class').on('change',function(e){
         $('#article').empty();
         class_name = e.target.value;
+        $('#subject').empty();
+           $('#subject').append('<option value="">Selece Subject</option>');
         $.get('/ajax-subcat?class_name='+class_name,function(data){
-           $('#subject').empty();
+           
            $('#article').empty();
            $('#article').hide();
             $.each(data,function(index,subjectObj){
