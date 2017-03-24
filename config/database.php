@@ -69,7 +69,7 @@ return [
             //'password' => env('DB_PASSWORD', ''),
 
             'host' => 'localhost',
-            'database' => 'mytokri',
+            'database' => 'q_bank',
             'username' => 'root',
             'password' => 'Ashiv2424$',
 
